@@ -10,7 +10,6 @@ const DocsList = () => {
       .then(data => {
         setDocs(data);
         setLoading(false);
-        console.log(data);
       })
       .catch(error => {
         console.error('Error fetching documents:', error);
@@ -26,7 +25,11 @@ const DocsList = () => {
     <div className="docs-container">
       {docs.map((doc, index) => (
         <div className="doc-card" key={index}>
-          <pre>{JSON.stringify(doc, null, 2)}</pre>
+          <div className="doc-ids">
+            <div className="doc-id">{doc.id}</div>
+            <div className="doc-id">{doc.docId}</div>
+          </div>
+          <pre className="doc-content">{JSON.stringify(doc.doc, null, 2)}</pre>
         </div>
       ))}
     </div>

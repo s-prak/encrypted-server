@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Encrypted Cloud Server</h1>
+        <h1 className="neon-heading">Encrypted Cloud Server</h1>
       </header>
       <DocsList />
     </div>
