@@ -1,0 +1,36 @@
+import React, { useEffect, useState } from 'react';
+
+const DocsList = () => {
+  const [docs, setDocs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('http://localhost:8080/document/get-all-docs')
+      .then(response => response.json())
+      .then(data => {
+        setDocs(data);
+        setLoading(false);
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error fetching documents:', error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="docs-container">
+      {docs.map((doc, index) => (
+        <div className="doc-card" key={index}>
+          <pre>{JSON.stringify(doc, null, 2)}</pre>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default DocsList;

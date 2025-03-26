@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/document")
 public class DocController {
@@ -24,4 +26,11 @@ public class DocController {
         DocModel savedDocument = docService.saveDocument(newDocument);
         return ResponseEntity.ok(savedDocument);
     }
+
+    @GetMapping("/get-all-docs")
+    public ResponseEntity<List<DocModel>> getAllDocuments() {
+        List<DocModel> documents = docService.getAllDocuments();
+        return ResponseEntity.ok(documents);
+    }
+
 }

@@ -3,6 +3,7 @@ package dev.sprak.encryptedSearch.doc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,4 +19,9 @@ public class DocService {
     public DocModel saveDocument(DocModel newDocument) {
         return docRepository.save(newDocument);
     }
+
+    public List<DocModel> getAllDocuments() {
+        return docRepository.findAll();
+    }
+
 }
