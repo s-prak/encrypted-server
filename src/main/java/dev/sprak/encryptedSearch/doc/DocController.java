@@ -15,8 +15,8 @@ public class DocController {
     @Autowired
     private DocService docService ;
 
-    @GetMapping("/get-doc/{docId}")
-    public ResponseEntity<DocModel> getDocument(@PathVariable String docId) {
+    @GetMapping("/get-doc")
+    public ResponseEntity<DocModel> getDocument(@RequestParam String docId) {
         Optional<DocModel> document = docService.getDocumentByDocId(docId);
         return document.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
