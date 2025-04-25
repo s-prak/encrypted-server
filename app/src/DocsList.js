@@ -5,9 +5,10 @@ const DocsList = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:8080/document/get-all-docs')
+    fetch('http://13.203.157.202:8080/document/get-all-docs')
       .then(response => response.json())
       .then(data => {
+	console.log(data);
         setDocs(data);
         setLoading(false);
       })
